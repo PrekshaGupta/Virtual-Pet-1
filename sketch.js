@@ -6,8 +6,8 @@ var foodS, foodStock;
 
 function preload(){
   //load images here
-  dog = loadImage("images/dogImg");
-  happyDog = loadImage("images/dogImg1");
+  dogImg = loadImage("images/dogImg.png");
+  happyDogImg = loadImage("images/dogImg1.png");
 }
 
 function setup() {
@@ -16,14 +16,16 @@ function setup() {
   foodStock = database.ref('Food');
   foodStock.on("value",readStock);
 
+  dog = image(dogImg, 250,400);
+  happyDog = image(happyDogImg);
+
 }
 
 function draw() {  
   background(46,139,87);
 
-  if (KeyWentDown(UP_ARROW)){
+  if (keyDown(UP_ARROW)){
     writeStock(foodS);
-    dog.addImage(happyDog);
   }
 
   drawSprites();
