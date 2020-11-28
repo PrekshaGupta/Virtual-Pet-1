@@ -16,8 +16,9 @@ function setup() {
   foodStock = database.ref('Food');
   foodStock.on("value",readStock);
 
-  dog = image(dogImg, 250,400);
-  happyDog = image(happyDogImg);
+  dog = createSprite(250,250,100,100);
+  dog.addImage(dogImg);
+  dog.scale = 0.2;
 
 }
 
@@ -27,15 +28,13 @@ function draw() {
   if (keyDown(UP_ARROW)){
     writeStock(foodS);
   }
-
-  drawSprites();
   //add styles here
 
   textSize(10);
   fill(255,0,255);
   stroke("black");
   text("NOTE: Press UP_ARROW Key to feed Drago milk!")
-
+  drawSprites();
 }
 
 //Function to read values from database
