@@ -12,14 +12,13 @@ function preload(){
 
 function setup() {
   createCanvas(500, 500);
-  var database = firebase.database();
+  database = firebase.database();
   foodStock = database.ref('Food');
   foodStock.on("value",readStock);
 
-  dog = createSprite(250,250,100,100);
+  dog = createSprite(250,300,150,150);
   dog.addImage(dogImg);
   dog.scale = 0.2;
-
 }
 
 function draw() {  
@@ -27,14 +26,16 @@ function draw() {
 
   if (keyDown(UP_ARROW)){
     writeStock(foodS);
+    dog.addImage(happyDogImg)
   }
   //add styles here
-
-  textSize(10);
-  fill(255,0,255);
-  stroke("black");
-  text("NOTE: Press UP_ARROW Key to feed Drago milk!")
   drawSprites();
+  textSize(13);
+  fill(255,255,255);
+  stroke("black");
+  text("Food remaining : "+foodS,170,200);
+  text("NOTE: Press UP_ARROW Key to feed Drago milk!",130,30)
+
 }
 
 //Function to read values from database
